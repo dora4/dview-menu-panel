@@ -103,4 +103,9 @@ class InputMenuPanelItem
     interface ContentWatcher {
         fun onContentChanged(item: InputMenuPanelItem?, content: String?)
     }
+
+    companion object {
+        @JvmField
+        val ID_EDIT_TEXT_INPUT: Int = R.id.et_menu_panel_input
+    }
 }

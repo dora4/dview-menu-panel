@@ -133,4 +133,15 @@ class IconMenuPanelItem(
         }
         arrowTextView.text = arrowText
     }
+
+    companion object {
+        @JvmField
+        val ID_IMAGE_VIEW_ICON: Int = R.id.iv_menu_panel_icon
+        @JvmField
+        val ID_TEXT_VIEW_MENU: Int = R.id.tv_menu_panel_normal_menu
+        @JvmField
+        val ID_IMAGE_VIEW_ARROW: Int = R.id.iv_menu_panel_normal_arrow
+        @JvmField
+        val ID_TEXT_VIEW_ARROW: Int = R.id.tv_menu_panel_normal_arrow
+    }
 }

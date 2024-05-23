@@ -10,6 +10,10 @@ interface MenuPanelItem : MenuPanelItemRoot {
 
     val layoutId: Int
     fun inflateView(context: Context): View
+
+    /**
+     * 每个菜单都有独一无二的menuName。
+     */
     val menuName: String?
     fun initData(menuView: View)
 }

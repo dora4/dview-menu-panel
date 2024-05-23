@@ -73,13 +73,12 @@ open class MenuPanel : ScrollView, View.OnClickListener {
         onPanelMenuClickListener = l
     }
 
-    fun setOnPanelScrollListener(l: OnPanelScrollListener?) {
+    fun setOnPanelScrollListener(l: OnPanelScrollListener) {
         onPanelScrollListener = l
     }
 
-    @JvmOverloads
-    fun parseItemView(item: MenuPanelItem?, isLoadData: Boolean = false): View {
-        val menuView = item!!.inflateView(context)
+    fun parseItemView(item: MenuPanelItem, isLoadData: Boolean = false): View {
+        val menuView = item.inflateView(context)
         if (isLoadData) {
             item.initData(menuView)
         }
@@ -261,7 +260,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
             )
             titleView.text = item.title
             titleView.textSize = 15f
-            titleView.setTextColor(-0x666667)
+            titleView.setTextColor(DEFAULT_PANEL_BG_COLOR)
             val menuCard = LinearLayout(context)
             menuCard.orientation = LinearLayout.VERTICAL
             menuCard.addView(titleView)
@@ -428,7 +427,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
             items.add(item)
         }
 
-        fun removeItem(item: MenuPanelItem?) {
+        fun removeItem(item: MenuPanelItem) {
             items.remove(item)
         }
 
@@ -467,7 +466,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
         super.onScrollChanged(l, t, oldl, oldt)
         if (scrollY == 0) {
             onPanelScrollListener?.onScrollToTop()
-        } else if (panelRoot!!.measuredHeight == scrollY + height) {
+        } else if (panelRoot.measuredHeight == scrollY + height) {
             onPanelScrollListener?.onScrollToBottom()
         }
     }

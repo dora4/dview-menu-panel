@@ -68,4 +68,10 @@ class ButtonMenuPanelItem(
         menuTextView.text = text
         menuTextView.setTextColor(textColor)
     }
+
+    companion object {
+
+        @JvmField
+        val ID_TEXT_VIEW_MENU: Int = R.id.tv_menu_panel_button_menu
+    }
 }
