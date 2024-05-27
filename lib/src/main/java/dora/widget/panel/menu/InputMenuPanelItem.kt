@@ -52,6 +52,16 @@ class InputMenuPanelItem
         watcher
     )
 
+    constructor(title: String? = "", titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(), menuName: String, hint: String, content: String, watcher: ContentWatcher?) : this(
+        1,
+        title,
+        titleSpan,
+        menuName,
+        hint,
+        content,
+        watcher
+    )
+
     override fun initData(menuView: View) {
         val lp = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
