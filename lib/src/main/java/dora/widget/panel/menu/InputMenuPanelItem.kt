@@ -27,24 +27,27 @@ class InputMenuPanelItem
     override var title: String?,
     private var titleSpan: MenuPanelItemRoot.Span,
     override val menuName: String?,
+    private val hint: String,
     private val content: String,
     private val watcher: ContentWatcher?
 ) : MenuPanelItem {
-    constructor(menuName: String) : this(1, "", MenuPanelItemRoot.Span(), menuName, "", null)
-    constructor(menuName: String, content: String) : this(
+    constructor(menuName: String, hint: String) : this(1, "", MenuPanelItemRoot.Span(), menuName, hint, "", null)
+    constructor(menuName: String, hint: String, content: String) : this(
         1,
         "",
         MenuPanelItemRoot.Span(),
         menuName,
+        hint,
         content,
         null
     )
 
-    constructor(menuName: String, content: String, watcher: ContentWatcher?) : this(
+    constructor(menuName: String, hint: String, content: String, watcher: ContentWatcher?) : this(
         1,
         "",
         MenuPanelItemRoot.Span(),
         menuName,
+        hint,
         content,
         watcher
     )
@@ -56,8 +59,8 @@ class InputMenuPanelItem
         )
         lp.topMargin = marginTop
         menuView.layoutParams = lp
-        val editText = menuView.findViewById<EditText>(R.id.et_menu_panel_input)
-        editText.hint = menuName
+        val editText = menuView.findViewById<EditText>(ID_EDIT_TEXT_INPUT)
+        editText.hint = hint
         if (!TextUtils.isEmpty(content)) {
             editText.setText(content)
             editText.setSelection(content.length)
@@ -101,7 +104,7 @@ class InputMenuPanelItem
     }
 
     interface ContentWatcher {
-        fun onContentChanged(item: InputMenuPanelItem?, content: String?)
+        fun onContentChanged(item: InputMenuPanelItem, content: String)
     }
 
     companion object {

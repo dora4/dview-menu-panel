@@ -120,10 +120,10 @@ class IconMenuPanelItem(
         )
         lp.topMargin = marginTop
         menuView.layoutParams = lp
-        val menuIconView = menuView.findViewById<ImageView>(R.id.iv_menu_panel_icon)
-        val menuTextView = menuView.findViewById<TextView>(R.id.tv_menu_panel_normal_menu)
-        val arrowIconView = menuView.findViewById<ImageView>(R.id.iv_menu_panel_normal_arrow)
-        val arrowTextView = menuView.findViewById<TextView>(R.id.tv_menu_panel_normal_arrow)
+        val menuIconView = menuView.findViewById<ImageView>(ID_IMAGE_VIEW_ICON)
+        val menuTextView = menuView.findViewById<TextView>(ID_TEXT_VIEW_MENU)
+        val arrowIconView = menuView.findViewById<ImageView>(ID_IMAGE_VIEW_ARROW)
+        val arrowTextView = menuView.findViewById<TextView>(ID_TEXT_VIEW_ARROW)
         menuIconView.setImageResource(mIconRes)
         menuTextView.text = text
         if (showArrowIcon) {

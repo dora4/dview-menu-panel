@@ -64,7 +64,7 @@ class ButtonMenuPanelItem(
         )
         lp.topMargin = marginTop
         menuView.layoutParams = lp
-        val menuTextView = menuView.findViewById<TextView>(R.id.tv_menu_panel_button_menu)
+        val menuTextView = menuView.findViewById<TextView>(ID_TEXT_VIEW_MENU)
         menuTextView.text = text
         menuTextView.setTextColor(textColor)
     }
