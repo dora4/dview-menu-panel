@@ -15,7 +15,7 @@ class TipsMenuPanel : MenuPanel {
 
     private var tips: String? = ""
     private var tipsColor = -0x666667
-    private lateinit var tipsView: TextView
+    private var tipsView: TextView? = null
 
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
@@ -41,8 +41,8 @@ class TipsMenuPanel : MenuPanel {
     }
 
     override fun updatePanel() {
-        if (tipsView != null) {
-            container.removeView(tipsView)
+        tipsView?.apply {
+            container.removeView(this)
         }
         if (tips != null && tips!!.isNotEmpty()) {
             tipsView = TextView(context)
@@ -52,10 +52,10 @@ class TipsMenuPanel : MenuPanel {
             )
             lp.topMargin = dp2px(context, 5f)
             lp.bottomMargin = dp2px(context, 5f)
-            tipsView.gravity = Gravity.CENTER_HORIZONTAL
-            tipsView.setTextColor(tipsColor)
-            tipsView.layoutParams = lp
-            tipsView.text = tips
+            tipsView!!.gravity = Gravity.CENTER_HORIZONTAL
+            tipsView!!.setTextColor(tipsColor)
+            tipsView!!.layoutParams = lp
+            tipsView!!.text = tips
             // 增加了底部的tips
             container.addView(tipsView)
         }
