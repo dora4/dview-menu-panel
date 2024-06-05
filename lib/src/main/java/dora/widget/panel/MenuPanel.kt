@@ -260,7 +260,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
             )
             titleView.text = item.title
             titleView.textSize = 15f
-            titleView.setTextColor(DEFAULT_PANEL_BG_COLOR)
+            titleView.setTextColor(DEFAULT_TITLE_COLOR)
             val menuCard = LinearLayout(context)
             menuCard.orientation = LinearLayout.VERTICAL
             menuCard.addView(titleView)
