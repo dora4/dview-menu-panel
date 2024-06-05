@@ -6,11 +6,11 @@ plugins {
 
 android {
     namespace = "dora.widget.panel"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 33
     }
     buildTypes {
         release {
@@ -19,13 +19,12 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_19
-        targetCompatibility = JavaVersion.VERSION_19
+        sourceCompatibility(JavaVersion.VERSION_1_8)
+        targetCompatibility(JavaVersion.VERSION_1_8)
     }
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.appcompat:appcompat:1.7.0")
 }
 
@@ -36,7 +35,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.dora4"
                 artifactId = rootProject.project.name
-                version = "1.9"
+                version = "1.13"
             }
         }
     }
