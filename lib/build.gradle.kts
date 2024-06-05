@@ -19,8 +19,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_19
-        targetCompatibility = JavaVersion.VERSION_19
+        sourceCompatibility(JavaVersion.VERSION_17)
+        targetCompatibility(JavaVersion.VERSION_17)
+    }
+    kotlinOptions {
+        jvmTarget = "17"
     }
 }
 
@@ -36,7 +39,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.dora4"
                 artifactId = rootProject.project.name
-                version = "1.9"
+                version = "1.11"
             }
         }
     }
