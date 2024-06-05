@@ -14,53 +14,15 @@ import dora.widget.panel.MenuPanelItem
 import dora.widget.panel.MenuPanelItemRoot
 
 class InputMenuPanelItem
-/**
- *
- * @param marginTop
- * @param title
- * @param titleSpan
- * @param menuName 提示信息
- * @param content 文本框输入的内容
- * @param watcher
- */(
-    override var marginTop: Int,
-    override var title: String?,
-    private var titleSpan: MenuPanelItemRoot.Span,
-    override val menuName: String?,
-    private val hint: String,
-    private val content: String,
-    private val watcher: ContentWatcher?
+    @JvmOverloads constructor(
+    override var marginTop: Int = 1,
+    override var title: String? = "",
+    private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(),
+    override val menuName: String,
+    private val hint: String? = null,
+    private val content: String? = null,
+    private val watcher: ContentWatcher? = null
 ) : MenuPanelItem {
-    constructor(menuName: String, hint: String) : this(1, "", MenuPanelItemRoot.Span(), menuName, hint, "", null)
-    constructor(menuName: String, hint: String, content: String) : this(
-        1,
-        "",
-        MenuPanelItemRoot.Span(),
-        menuName,
-        hint,
-        content,
-        null
-    )
-
-    constructor(menuName: String, hint: String, content: String, watcher: ContentWatcher?) : this(
-        1,
-        "",
-        MenuPanelItemRoot.Span(),
-        menuName,
-        hint,
-        content,
-        watcher
-    )
-
-    constructor(title: String? = "", titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(), menuName: String, hint: String, content: String, watcher: ContentWatcher?) : this(
-        1,
-        title,
-        titleSpan,
-        menuName,
-        hint,
-        content,
-        watcher
-    )
 
     override fun initData(menuView: View) {
         val lp = LinearLayout.LayoutParams(
@@ -73,7 +35,7 @@ class InputMenuPanelItem
         editText.hint = hint
         if (!TextUtils.isEmpty(content)) {
             editText.setText(content)
-            editText.setSelection(content.length)
+            editText.setSelection(content!!.length)
         }
         if (watcher != null) {
             editText.addTextChangedListener(object : TextWatcher {
