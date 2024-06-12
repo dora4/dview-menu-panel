@@ -1,11 +1,13 @@
 package dora.widget.panel
 
+import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_MARGIN_TOP
+import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_TITLE_SPAN
 import java.util.Arrays
 
-class MenuPanelItemGroup(
-    override var marginTop: Int,
+class MenuPanelItemGroup @JvmOverloads constructor(
+    override var marginTop: Int = DEFAULT_MARGIN_TOP,
     override var title: String?,
-    private var titleSpan: MenuPanelItemRoot.Span,
+    private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
     val items: MutableList<MenuPanelItem>
 ) : MenuPanelItemRoot {
 

@@ -3,13 +3,13 @@ package dora.widget.panel
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
-import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_MARGIN_TOP
 import java.util.LinkedList
 import java.util.UUID
 
@@ -365,12 +365,8 @@ open class MenuPanel : ScrollView, View.OnClickListener {
     }
 
     private fun applyDefault(item: MenuPanelItem) {
-        // item的上边距修改为1dp
-        item.marginTop =
-            TypedValue.applyDimension(
-                TypedValue.COMPLEX_UNIT_DIP, 1f,
-                resources.displayMetrics
-            ).toInt()
+        // item的上边距修改为1px
+        item.marginTop = DEFAULT_MARGIN_TOP
         // item去掉标题
         item.title = ""
         // item去掉标题边距

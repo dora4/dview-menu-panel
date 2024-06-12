@@ -8,19 +8,19 @@ import android.widget.LinearLayout
 import dora.widget.panel.IMenu
 import dora.widget.panel.MenuPanelItem
 import dora.widget.panel.MenuPanelItemRoot
+import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_MARGIN_TOP
+import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_TITLE_SPAN
 
 /**
  * 可用它自定义面板菜单。
  *
  * @param <T> 数据实体类
 </T> */
-abstract class AbsMenuPanelItem<T : IMenu>(
-    override var marginTop: Int,
-    private var titleSpan: MenuPanelItemRoot.Span,
+abstract class AbsMenuPanelItem<T : IMenu> @JvmOverloads constructor(
+    override var marginTop: Int = DEFAULT_MARGIN_TOP,
+    private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
     protected var menu: T
 ) : MenuPanelItem {
-
-    constructor(menu: T) : this(1, MenuPanelItemRoot.Span(), menu)
 
     override fun inflateView(context: Context): View {
         val view = LayoutInflater.from(context).inflate(layoutId, null)
@@ -46,5 +46,5 @@ abstract class AbsMenuPanelItem<T : IMenu>(
     }
 
     override val menuName: String?
-        get() = menu.menuName
+        get() = menu.menuName ?: MenuPanelItem.generateMenuName()
 }

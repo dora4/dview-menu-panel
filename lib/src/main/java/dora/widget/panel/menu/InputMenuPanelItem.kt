@@ -12,13 +12,15 @@ import android.widget.LinearLayout
 import dora.widget.panel.R
 import dora.widget.panel.MenuPanelItem
 import dora.widget.panel.MenuPanelItemRoot
+import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_MARGIN_TOP
+import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_TITLE_SPAN
 
 class InputMenuPanelItem
     @JvmOverloads constructor(
-    override var marginTop: Int = 1,
+    override var marginTop: Int = DEFAULT_MARGIN_TOP,
     override var title: String? = "",
-    private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(),
-    override val menuName: String,
+    private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
+    override val menuName: String? = MenuPanelItem.generateMenuName("InputMenuPanelItem"),
     private val hint: String? = null,
     private val content: String? = null,
     private val watcher: ContentWatcher? = null

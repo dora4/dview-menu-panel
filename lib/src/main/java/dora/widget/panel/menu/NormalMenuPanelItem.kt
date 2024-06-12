@@ -10,87 +10,18 @@ import android.widget.TextView
 import dora.widget.panel.R
 import dora.widget.panel.MenuPanelItem
 import dora.widget.panel.MenuPanelItemRoot
+import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_MARGIN_TOP
+import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_TITLE_SPAN
 
-class NormalMenuPanelItem(
-    override var marginTop: Int,
+class NormalMenuPanelItem @JvmOverloads constructor(
+    override var marginTop: Int = DEFAULT_MARGIN_TOP,
     override var title: String?,
-    private var titleSpan: MenuPanelItemRoot.Span,
-    override val menuName: String?,
+    private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
+    override val menuName: String? = MenuPanelItem.generateMenuName("NormalMenuPanelItem"),
     private val text: String?,
-    private val showArrowIcon: Boolean,
+    private val showArrowIcon: Boolean = true,
     private val arrowText: String?
 ) : MenuPanelItem {
-
-    /**
-     * 不显示角落图标，也不显示角落文本。
-     *
-     * @param menuName
-     */
-    constructor(menuName: String, text: String?) : this(
-        1,
-        "",
-        MenuPanelItemRoot.Span(),
-        menuName,
-        text,
-        true,
-        ""
-    )
-
-    constructor(menuName: String, text: String?, showArrowIcon: Boolean) : this(
-        1,
-        "",
-        MenuPanelItemRoot.Span(),
-        menuName,
-        text,
-        showArrowIcon,
-        ""
-    )
-
-    constructor(marginTop: Int, menuName: String, text: String?) : this(
-        marginTop,
-        "",
-        MenuPanelItemRoot.Span(),
-        menuName,
-        text,
-        true,
-        ""
-    )
-
-    constructor(marginTop: Int, menuName: String, text: String?, showArrowIcon: Boolean) : this(
-        marginTop,
-        "",
-        MenuPanelItemRoot.Span(),
-        menuName,
-        text,
-        showArrowIcon,
-        ""
-    )
-
-    /**
-     * 显示角落图标，也显示角落文本。
-     *
-     * @param menuName
-     * @param arrowText
-     */
-    constructor(menuName: String, text: String?, arrowText: String?) : this(
-        1,
-        "",
-        MenuPanelItemRoot.Span(),
-        menuName,
-        text,
-        true,
-        arrowText
-    )
-
-    constructor(menuName: String, text: String?, showArrowIcon: Boolean, arrowText: String?) : this(
-        1,
-        "",
-        MenuPanelItemRoot.Span(),
-        menuName,
-        text,
-        showArrowIcon,
-        arrowText
-    )
 
     override fun hasTitle(): Boolean {
         return title != null && title != ""

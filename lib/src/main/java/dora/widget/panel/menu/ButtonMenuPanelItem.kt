@@ -1,7 +1,6 @@
 package dora.widget.panel.menu
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,33 +9,17 @@ import android.widget.TextView
 import dora.widget.panel.R
 import dora.widget.panel.MenuPanelItem
 import dora.widget.panel.MenuPanelItemRoot
+import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_MARGIN_TOP
+import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_TITLE_SPAN
 
-class ButtonMenuPanelItem(
-    override var marginTop: Int,
-    override var title: String?,
-    private var titleSpan: MenuPanelItemRoot.Span,
-    override val menuName: String?,
+class ButtonMenuPanelItem @JvmOverloads constructor(
+    override var marginTop: Int = DEFAULT_MARGIN_TOP,
+    override var title: String? = "",
+    private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
+    override val menuName: String? = MenuPanelItem.generateMenuName("ButtonMenuPanelItem"),
     private val text: String?,
     private val textColor: Int,
 ) : MenuPanelItem {
-
-    constructor(menuName: String, text: String?, textColor: Int = Color.BLACK) : this(
-        1,
-        "",
-        MenuPanelItemRoot.Span(),
-        menuName,
-        text,
-        textColor
-    )
-
-    constructor(marginTop: Int, menuName: String, text: String?, textColor: Int = Color.BLACK) : this(
-        marginTop,
-        "",
-        MenuPanelItemRoot.Span(),
-        menuName,
-        text,
-        textColor
-    )
 
     override fun hasTitle(): Boolean {
         return title != null && title != ""

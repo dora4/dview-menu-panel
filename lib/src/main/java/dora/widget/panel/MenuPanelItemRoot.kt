@@ -48,11 +48,23 @@ interface MenuPanelItemRoot {
             vertical
         )
 
+        /**
+         * 同时设置水平间距和垂直间距。
+         *
+         * @param size
+         */
+        constructor(size: Int) : this(size, size)
+
         constructor(left: Int, top: Int, right: Int, bottom: Int) {
             this.left = left
             this.top = top
             this.right = right
             this.bottom = bottom
         }
+    }
+
+    companion object {
+        var DEFAULT_MARGIN_TOP = 1
+        var DEFAULT_TITLE_SPAN = 16
     }
 }
