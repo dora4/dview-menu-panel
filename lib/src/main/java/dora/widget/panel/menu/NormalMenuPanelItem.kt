@@ -31,7 +31,11 @@ class NormalMenuPanelItem @JvmOverloads constructor(
 
     constructor(marginTop: Int, menuName: String, text: String, showArrowIcon: Boolean) : this(marginTop, menuName, text, showArrowIcon, "")
 
+    constructor(marginTop: Int, menuName: String, text: String) : this(marginTop, menuName, text, true)
+
     constructor(menuName: String, text: String, showArrowIcon: Boolean) : this(DEFAULT_MARGIN_TOP, menuName, text, showArrowIcon)
+
+    constructor(menuName: String, text: String, arrowText: String) : this(menuName, text, true, arrowText)
 
     constructor(menuName: String, text: String) : this(DEFAULT_MARGIN_TOP, "",
         MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), menuName, text, true, "")

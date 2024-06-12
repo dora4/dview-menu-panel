@@ -6,10 +6,13 @@ import java.util.Arrays
 
 class MenuPanelItemGroup @JvmOverloads constructor(
     override var marginTop: Int = DEFAULT_MARGIN_TOP,
-    override var title: String?,
+    override var title: String? = null,
     private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
     val items: MutableList<MenuPanelItem>
 ) : MenuPanelItemRoot {
+
+    constructor(marginTop: Int, items: MutableList<MenuPanelItem>) : this(marginTop, "",
+        MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), items)
 
     constructor(
         marginTop: Int = DEFAULT_MARGIN_TOP,
