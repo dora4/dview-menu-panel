@@ -16,11 +16,13 @@ import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_TITLE_SPAN
  *
  * @param <T> 数据实体类
 </T> */
-abstract class AbsMenuPanelItem<T : IMenu> @JvmOverloads constructor(
+abstract class AbsMenuPanelItem<T : IMenu> constructor(
     override var marginTop: Int = DEFAULT_MARGIN_TOP,
     private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
     protected var menu: T
 ) : MenuPanelItem {
+
+    constructor(menu: T) : this(DEFAULT_MARGIN_TOP, MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), menu)
 
     override fun inflateView(context: Context): View {
         val view = LayoutInflater.from(context).inflate(layoutId, null)

@@ -19,11 +19,18 @@ class IconMenuPanelItem @JvmOverloads constructor(
     override var title: String?,
     private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
     override val menuName: String? = MenuPanelItem.generateMenuName("IconMenuPanelItem"),
-    @field:DrawableRes private val mIconRes: Int,
+    @field:DrawableRes private val iconRes: Int,
     private val text: String?,
     private val showArrowIcon: Boolean = true,
     private val arrowText: String?
 ) : MenuPanelItem {
+
+    constructor(marginTop: Int, menuName: String?, iconRes: Int, text: String) :
+            this(marginTop, "", MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
+                menuName, iconRes, text, true, "")
+
+    constructor(menuName: String?, iconRes: Int, text: String) :
+            this(DEFAULT_MARGIN_TOP, menuName, iconRes, text)
 
     override fun hasTitle(): Boolean {
         return title != null && title != ""
@@ -55,7 +62,7 @@ class IconMenuPanelItem @JvmOverloads constructor(
         val menuTextView = menuView.findViewById<TextView>(ID_TEXT_VIEW_MENU)
         val arrowIconView = menuView.findViewById<ImageView>(ID_IMAGE_VIEW_ARROW)
         val arrowTextView = menuView.findViewById<TextView>(ID_TEXT_VIEW_ARROW)
-        menuIconView.setImageResource(mIconRes)
+        menuIconView.setImageResource(iconRes)
         menuTextView.text = text
         if (showArrowIcon) {
             arrowIconView.visibility = View.VISIBLE

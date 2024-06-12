@@ -21,6 +21,12 @@ class ButtonMenuPanelItem @JvmOverloads constructor(
     private val textColor: Int,
 ) : MenuPanelItem {
 
+    constructor(marginTop: Int, menuName: String, text: String, textColor: Int) :
+            this(marginTop, "", MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), menuName, text, textColor)
+
+    constructor(menuName: String, text: String, textColor: Int) :
+            this(DEFAULT_MARGIN_TOP, menuName, text, textColor)
+
     override fun hasTitle(): Boolean {
         return title != null && title != ""
     }

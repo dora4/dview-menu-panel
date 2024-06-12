@@ -23,6 +23,12 @@ class NormalMenuPanelItem @JvmOverloads constructor(
     private val arrowText: String?
 ) : MenuPanelItem {
 
+    constructor(menuName: String, text: String, showArrowIcon: Boolean) : this(DEFAULT_MARGIN_TOP, "",
+        MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), menuName, text, showArrowIcon, "")
+
+    constructor(menuName: String, text: String) : this(DEFAULT_MARGIN_TOP, "",
+        MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), menuName, text, true, "")
+
     override fun hasTitle(): Boolean {
         return title != null && title != ""
     }

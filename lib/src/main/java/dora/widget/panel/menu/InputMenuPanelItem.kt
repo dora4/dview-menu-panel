@@ -26,6 +26,22 @@ class InputMenuPanelItem
     private val watcher: ContentWatcher? = null
 ) : MenuPanelItem {
 
+    constructor(title: String, titleSpan: MenuPanelItemRoot.Span, hint: String,
+                content: String, watcher: ContentWatcher? = null) : this(DEFAULT_MARGIN_TOP,
+        title, titleSpan, MenuPanelItem.generateMenuName("InputMenuPanelItem"),
+        hint, content, watcher)
+
+    constructor(title: String, titleSpan: MenuPanelItemRoot.Span, hint: String,
+                content: String) : this(title, titleSpan, hint, content, null)
+
+    constructor(hint: String,
+                content: String, watcher: ContentWatcher? = null) : this(DEFAULT_MARGIN_TOP,
+        "", MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), MenuPanelItem.generateMenuName("InputMenuPanelItem"),
+        hint, content, watcher)
+
+    constructor(hint: String,
+                content: String) : this(hint, content, null)
+
     override fun initData(menuView: View) {
         val lp = LinearLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
