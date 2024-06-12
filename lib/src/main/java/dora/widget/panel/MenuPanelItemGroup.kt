@@ -11,9 +11,6 @@ class MenuPanelItemGroup @JvmOverloads constructor(
     val items: MutableList<MenuPanelItem>
 ) : MenuPanelItemRoot {
 
-    constructor(marginTop: Int, items: MutableList<MenuPanelItem>) : this(marginTop, "",
-        MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), items)
-
     constructor(
         marginTop: Int = DEFAULT_MARGIN_TOP,
         title: String?,
