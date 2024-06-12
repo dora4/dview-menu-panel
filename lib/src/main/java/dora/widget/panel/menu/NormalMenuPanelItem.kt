@@ -15,12 +15,12 @@ import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_TITLE_SPAN
 
 class NormalMenuPanelItem @JvmOverloads constructor(
     override var marginTop: Int = DEFAULT_MARGIN_TOP,
-    override var title: String?,
+    override var title: String? = null,
     private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
     override val menuName: String? = MenuPanelItem.generateMenuName("NormalMenuPanelItem"),
-    private val text: String?,
+    private val text: String? = null,
     private val showArrowIcon: Boolean = true,
-    private val arrowText: String?
+    private val arrowText: String? = null
 ) : MenuPanelItem {
 
     constructor(marginTop: Int, menuName: String, text: String, showArrowIcon: Boolean, arrowText: String) : this(marginTop, "",
@@ -34,8 +34,6 @@ class NormalMenuPanelItem @JvmOverloads constructor(
     constructor(marginTop: Int, menuName: String, text: String) : this(marginTop, menuName, text, true)
 
     constructor(menuName: String, text: String, showArrowIcon: Boolean) : this(DEFAULT_MARGIN_TOP, menuName, text, showArrowIcon)
-
-    constructor(menuName: String, text: String, arrowText: String) : this(menuName, text, true, arrowText)
 
     constructor(menuName: String, text: String) : this(DEFAULT_MARGIN_TOP, "",
         MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), menuName, text, true, "")
