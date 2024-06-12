@@ -23,8 +23,15 @@ class NormalMenuPanelItem @JvmOverloads constructor(
     private val arrowText: String?
 ) : MenuPanelItem {
 
-    constructor(menuName: String, text: String, showArrowIcon: Boolean) : this(DEFAULT_MARGIN_TOP, "",
-        MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), menuName, text, showArrowIcon, "")
+    constructor(marginTop: Int, menuName: String, text: String, showArrowIcon: Boolean, arrowText: String) : this(marginTop, "",
+        MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), menuName, text, showArrowIcon, arrowText)
+
+    constructor(menuName: String, text: String, showArrowIcon: Boolean, arrowText: String) : this(DEFAULT_MARGIN_TOP, "",
+        MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), menuName, text, showArrowIcon, arrowText)
+
+    constructor(marginTop: Int, menuName: String, text: String, showArrowIcon: Boolean) : this(marginTop, menuName, text, showArrowIcon, "")
+
+    constructor(menuName: String, text: String, showArrowIcon: Boolean) : this(DEFAULT_MARGIN_TOP, menuName, text, showArrowIcon)
 
     constructor(menuName: String, text: String) : this(DEFAULT_MARGIN_TOP, "",
         MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), menuName, text, true, "")
