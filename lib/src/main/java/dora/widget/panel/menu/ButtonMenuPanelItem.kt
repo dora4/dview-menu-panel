@@ -17,7 +17,7 @@ class ButtonMenuPanelItem @JvmOverloads constructor(
     override var title: String? = "",
     private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
     override val menuName: String? = MenuPanelItem.generateMenuName("ButtonMenuPanelItem"),
-    private val text: String?,
+    private val text: String? = "",
     private val textColor: Int,
 ) : MenuPanelItem {
 

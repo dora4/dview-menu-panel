@@ -16,13 +16,13 @@ import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_TITLE_SPAN
 
 class IconMenuPanelItem @JvmOverloads constructor(
     override var marginTop: Int = DEFAULT_MARGIN_TOP,
-    override var title: String?,
+    override var title: String? = "",
     private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
     override val menuName: String? = MenuPanelItem.generateMenuName("IconMenuPanelItem"),
     @field:DrawableRes private val iconRes: Int,
-    private val text: String?,
+    private val text: String? = "",
     private val showArrowIcon: Boolean = true,
-    private val arrowText: String?
+    private val arrowText: String? = ""
 ) : MenuPanelItem {
 
     constructor(marginTop: Int, menuName: String?, iconRes: Int, text: String) :

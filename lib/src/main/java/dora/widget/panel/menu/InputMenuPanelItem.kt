@@ -21,8 +21,8 @@ class InputMenuPanelItem
     override var title: String? = "",
     private var titleSpan: MenuPanelItemRoot.Span = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
     override val menuName: String? = MenuPanelItem.generateMenuName("InputMenuPanelItem"),
-    private val hint: String? = null,
-    private val content: String? = null,
+    private val hint: String?  = "",
+    private val content: String? = "",
     private val watcher: ContentWatcher? = null
 ) : MenuPanelItem {
 

@@ -64,7 +64,7 @@ interface MenuPanelItemRoot {
     }
 
     companion object {
-        var DEFAULT_MARGIN_TOP = 1
-        var DEFAULT_TITLE_SPAN = 16
+        var DEFAULT_MARGIN_TOP = 2
+        var DEFAULT_TITLE_SPAN = 24
     }
 }
