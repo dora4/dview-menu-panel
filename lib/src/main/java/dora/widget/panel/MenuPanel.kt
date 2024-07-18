@@ -9,6 +9,9 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import androidx.annotation.ColorInt
+import androidx.annotation.IdRes
+import androidx.annotation.IntRange
 import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_MARGIN_TOP
 import java.util.LinkedList
 import java.util.UUID
@@ -88,8 +91,8 @@ open class MenuPanel : ScrollView, View.OnClickListener {
     val items: List<MenuPanelItem>
         get() = menuPanelItems
 
-    fun getItem(position: Int): MenuPanelItem? {
-        if (position < 0 || position > menuPanelItems.size - 1) {
+    fun getItem(@IntRange(from = 0) position: Int): MenuPanelItem? {
+        if (position > menuPanelItems.size - 1) {
             return null
         }
         return menuPanelItems[position]
@@ -113,11 +116,11 @@ open class MenuPanel : ScrollView, View.OnClickListener {
      * @param position
      * @return
      */
-    fun removeItem(position: Int): MenuPanel {
+    fun removeItem(@IntRange(from = 0) position: Int): MenuPanel {
         val item = menuPanelItems[position]
         val groupInfo = getGroupInfo(item)
         val belongToGroup = groupInfo != null
-        val view = getCacheViewFromPosition(position)
+        val view = getItemView(position)
         if (!belongToGroup) {
             container.removeView(view)
         } else {
@@ -159,7 +162,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
      * @param end   最后一个item的下标，包括
      * @return
      */
-    fun removeItemRange(start: Int, end: Int): MenuPanel {
+    fun removeItemRange(@IntRange(from = 0) start: Int, end: Int): MenuPanel {
         for (i in start until end + 1) {
             removeItem(start)
         }
@@ -172,7 +175,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
      * @param start 第一个item的下标，包括
      * @return
      */
-    fun removeItemFrom(start: Int): MenuPanel {
+    fun removeItemFrom(@IntRange(from = 0) start: Int): MenuPanel {
         val end = menuPanelItems.size - 1
         if (start <= end) {
             // 有就移除
@@ -295,6 +298,13 @@ open class MenuPanel : ScrollView, View.OnClickListener {
         return SEEK_FOR_ITEM_ERROR_NOT_FOUND
     }
 
+    @Deprecated("已过时，请使用getViewByPosition()方法替代", replaceWith = ReplaceWith("getViewByPosition"),
+        level = DeprecationLevel.WARNING)
+    fun getCacheChildView(position: Int, viewId: Int): View? {
+        val menuView = getItemView(position)
+        return menuView?.findViewById(viewId)
+    }
+
     /**
      * 获取MenuPanel中条目布局中的子控件，推荐使用。
      *
@@ -302,9 +312,20 @@ open class MenuPanel : ScrollView, View.OnClickListener {
      * @param viewId
      * @return
      */
-    fun getCacheChildView(position: Int, viewId: Int): View? {
-        val menuView = getCacheViewFromPosition(position)
+    fun getViewByPosition(@IntRange(from = 0) position: Int, @IdRes viewId: Int): View? {
+        val menuView = getItemView(position)
         return menuView?.findViewById(viewId)
+    }
+
+    @Deprecated("已过时，请使用getItemView()方法替代", replaceWith = ReplaceWith("getItemView"),
+        level = DeprecationLevel.WARNING)
+    fun getCacheViewFromItem(item: MenuPanelItem): View? {
+        val position = seekForItemPosition(item)
+        return if (position != SEEK_FOR_ITEM_ERROR_NOT_FOUND &&
+            position != SEEK_FOR_ITEM_ERROR_MISS_MENU_NAME
+        ) {
+            getItemView(position)
+        } else null
     }
 
     /**
@@ -313,12 +334,20 @@ open class MenuPanel : ScrollView, View.OnClickListener {
      * @param item
      * @return
      */
-    fun getCacheViewFromItem(item: MenuPanelItem): View? {
+    fun getItemView(item: MenuPanelItem): View? {
         val position = seekForItemPosition(item)
         return if (position != SEEK_FOR_ITEM_ERROR_NOT_FOUND &&
             position != SEEK_FOR_ITEM_ERROR_MISS_MENU_NAME
         ) {
-            getCacheViewFromPosition(position)
+            getItemView(position)
+        } else null
+    }
+
+    @Deprecated("已过时，请使用getItemView()方法替代", replaceWith = ReplaceWith("getItemView"),
+        level = DeprecationLevel.WARNING)
+    fun getCacheViewFromPosition(position: Int): View? {
+        return if (position < viewsCache.size) {
+            viewsCache[position]
         } else null
     }
 
@@ -328,10 +357,8 @@ open class MenuPanel : ScrollView, View.OnClickListener {
      * @param position item的位置，从0开始
      * @return
      */
-    fun getCacheViewFromPosition(position: Int): View? {
-        return if (position < viewsCache.size) {
-            viewsCache[position]
-        } else null
+    fun getItemView(@IntRange(from = 0) position: Int): View? {
+        return viewsCache[position]
     }
 
     protected fun getCacheViewFromTag(tag: String): View? {
@@ -339,7 +366,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
             val dtag = delegate.tag
             if (dtag == tag) {
                 val position = delegate.position
-                return getCacheViewFromPosition(position)
+                return getItemView(position)
             }
         }
         return null
@@ -384,12 +411,12 @@ open class MenuPanel : ScrollView, View.OnClickListener {
         return this
     }
 
-    fun <T : View> addCustomView(view: T, index: Int): MenuPanel {
+    fun <T : View> addCustomView(view: T, @IntRange(from = 0) index: Int): MenuPanel {
         container.addView(view, index)
         return this
     }
 
-    fun removeCustomViewAt(position: Int): MenuPanel {
+    fun removeCustomViewAt(@IntRange(from = 0) position: Int): MenuPanel {
         if (container.childCount > position) {
             // 有就移除
             container.removeViewAt(position)
@@ -448,7 +475,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
         }
     }
 
-    fun setPanelBgColor(color: Int): MenuPanel {
+    fun setPanelBgColor(@ColorInt color: Int): MenuPanel {
         panelBgColor = color
         container.setBackgroundColor(panelBgColor)
         return this
