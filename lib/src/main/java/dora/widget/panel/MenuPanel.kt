@@ -467,8 +467,9 @@ open class MenuPanel : ScrollView, View.OnClickListener {
         for (delegate in listenerInfo) {
             if (delegate.tag == tag) {
                 val clickPos = delegate.position
-                menuPanelItems[clickPos].menuName?.let {
-                    onPanelMenuClickListener?.onMenuClick(clickPos, v, it)
+                val item = menuPanelItems[clickPos]
+                item.menuName?.let {
+                    onPanelMenuClickListener?.onMenuClick(clickPos, v, it, item)
                 }
                 break
             }
@@ -482,7 +483,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
     }
 
     interface OnPanelMenuClickListener {
-        fun onMenuClick(position: Int, view: View, menuName: String)
+        fun onMenuClick(position: Int, view: View, menuName: String, item: MenuPanelItem)
     }
 
     override fun onScrollChanged(l: Int, t: Int, oldl: Int, oldt: Int) {
