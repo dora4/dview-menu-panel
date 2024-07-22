@@ -201,7 +201,8 @@ open class MenuPanel : ScrollView, View.OnClickListener {
 
     fun addMenuGroup(itemGroup: MenuPanelItemGroup): MenuPanel {
         val hasTitle = itemGroup.hasTitle()
-        val items = itemGroup.items
+        // 修复数组创建出来的List修改元素抛java.lang.UnsupportedOperationException异常，包装一下就可以修改了
+        val items = arrayListOf(itemGroup.items)
         val titleView = TextView(context)
         titleView.setPadding(
             itemGroup.getTitleSpan().left, itemGroup.getTitleSpan().top,
