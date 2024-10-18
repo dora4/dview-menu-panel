@@ -5,4 +5,6 @@
     <color name="color_menu_panel_gray">#808080</color>
 
     <color name="color_menu_panel_item_arrow">#A7A7A7</color>
+    <!-- 输入菜单光标颜色 -->
+    <color name="color_menu_panel_input_cursor">#BDBDBD</color>
 </resources>
