@@ -8,11 +8,13 @@
     <LinearLayout
         android:id="@+id/ll_menu_panel_arrow"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center_vertical"
+        android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="15dp"
+        android:paddingVertical="5dp"
         android:visibility="gone">
         <ImageView
             android:id="@+id/iv_menu_panel_random"
