@@ -22,16 +22,22 @@
             android:layout_height="wrap_content"
             android:src="@drawable/shape_random"/>
     </LinearLayout>
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_menu_panel_input"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textCursorDrawable="@drawable/shape_input_cursor"
+        android:orientation="vertical"
         android:layout_toStartOf="@id/ll_menu_panel_arrow"
-        android:layout_centerVertical="true"
-        android:paddingHorizontal="15dp"
-        android:paddingVertical="10dp"
-        android:singleLine="true"
-        android:maxLines="1"
-        android:textSize="15sp" />
+        android:layout_centerVertical="true">
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_menu_panel_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_menu_panel_white"
+            android:textCursorDrawable="@drawable/shape_input_cursor"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="10dp"
+            android:singleLine="true"
+            android:maxLines="1"
+            android:textSize="15sp" />
+    </LinearLayout>
 </RelativeLayout>
