@@ -6,8 +6,10 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.LinearLayout
 import dora.widget.panel.R
 import dora.widget.panel.MenuPanelItem
@@ -23,21 +25,25 @@ class InputMenuPanelItem
     override val menuName: String? = MenuPanelItem.generateMenuName("InputMenuPanelItem"),
     private val hint: String?  = "",
     private val content: String? = "",
-    private val watcher: ContentWatcher? = null
+    private val showArrowIcon: Boolean = true,
+    private val watcher: ContentWatcher? = null,
+    private val onRandom: OnClickListener? = null,
 ) : MenuPanelItem {
 
     constructor(title: String, titleSpan: MenuPanelItemRoot.Span, hint: String,
-                content: String, watcher: ContentWatcher? = null) : this(DEFAULT_MARGIN_TOP,
+                content: String, showArrowIcon: Boolean, watcher: ContentWatcher? = null,
+                onRandom: OnClickListener? = null) : this(DEFAULT_MARGIN_TOP,
         title, titleSpan, MenuPanelItem.generateMenuName("InputMenuPanelItem"),
-        hint, content, watcher)
+        hint, content, showArrowIcon, watcher, onRandom)
 
     constructor(title: String, titleSpan: MenuPanelItemRoot.Span, hint: String,
-                content: String) : this(title, titleSpan, hint, content, null)
+                content: String, showArrowIcon: Boolean,
+                onRandom: OnClickListener? = null) : this(title, titleSpan, hint, content, showArrowIcon, null, onRandom)
 
     constructor(hint: String,
                 content: String, watcher: ContentWatcher? = null) : this(DEFAULT_MARGIN_TOP,
         "", MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), MenuPanelItem.generateMenuName("InputMenuPanelItem"),
-        hint, content, watcher)
+        hint, content, false, watcher)
 
     constructor(hint: String,
                 content: String) : this(hint, content, null)
@@ -72,6 +78,13 @@ class InputMenuPanelItem
                 override fun afterTextChanged(s: Editable) {}
             })
         }
+        val arrowIconView = menuView.findViewById<ImageView>(ID_IMAGE_VIEW_RANDOM)
+        if (showArrowIcon) {
+            arrowIconView.visibility = View.VISIBLE
+            arrowIconView.setOnClickListener(onRandom)
+        } else {
+            arrowIconView.visibility = View.INVISIBLE
+        }
     }
 
     override fun hasTitle(): Boolean {
@@ -100,5 +113,7 @@ class InputMenuPanelItem
     companion object {
         @JvmField
         val ID_EDIT_TEXT_INPUT: Int = R.id.et_menu_panel_input
+        @JvmField
+        val ID_IMAGE_VIEW_RANDOM: Int = R.id.iv_menu_panel_random
     }
 }
