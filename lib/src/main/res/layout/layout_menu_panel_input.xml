@@ -26,6 +26,7 @@
         android:id="@+id/et_menu_panel_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/color_menu_panel_white"
         android:textCursorDrawable="@drawable/shape_input_cursor"
         android:layout_toStartOf="@id/ll_menu_panel_arrow"
         android:layout_centerVertical="true"
