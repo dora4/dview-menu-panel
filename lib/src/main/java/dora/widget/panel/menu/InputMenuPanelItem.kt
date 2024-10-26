@@ -27,18 +27,18 @@ class InputMenuPanelItem
     private val content: String? = "",
     private val showArrowIcon: Boolean = false,
     private val watcher: ContentWatcher? = null,
-    private val onRandom: OnClickListener? = null,
+    private val onRandom: ContentWriter? = null,
 ) : MenuPanelItem {
 
     constructor(title: String, titleSpan: MenuPanelItemRoot.Span, hint: String,
                 content: String, showArrowIcon: Boolean, watcher: ContentWatcher? = null,
-                onRandom: OnClickListener? = null) : this(DEFAULT_MARGIN_TOP,
+                onRandom: ContentWriter? = null) : this(DEFAULT_MARGIN_TOP,
         title, titleSpan, MenuPanelItem.generateMenuName("InputMenuPanelItem"),
         hint, content, showArrowIcon, watcher, onRandom)
 
     constructor(title: String, titleSpan: MenuPanelItemRoot.Span, hint: String,
                 content: String, showArrowIcon: Boolean,
-                onRandom: OnClickListener? = null) : this(title, titleSpan, hint, content, showArrowIcon, null, onRandom)
+                onRandom: ContentWriter? = null) : this(title, titleSpan, hint, content, showArrowIcon, null, onRandom)
 
     constructor(hint: String,
                 content: String, watcher: ContentWatcher? = null) : this(DEFAULT_MARGIN_TOP,
@@ -81,7 +81,9 @@ class InputMenuPanelItem
         val arrowView = menuView.findViewById<ImageView>(ID_LINEAR_LAYOUT_ARROW)
         if (showArrowIcon) {
             arrowView.visibility = View.VISIBLE
-            arrowView.setOnClickListener(onRandom)
+            arrowView.setOnClickListener {
+                onRandom?.onRandomContent(this, editText)
+            }
         } else {
             arrowView.visibility = View.INVISIBLE
         }
@@ -108,6 +110,10 @@ class InputMenuPanelItem
 
     interface ContentWatcher {
         fun onContentChanged(item: InputMenuPanelItem, content: String)
+    }
+
+    interface ContentWriter {
+        fun onRandomContent(item: InputMenuPanelItem, editText: EditText)
     }
 
     companion object {
