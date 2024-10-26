@@ -6,10 +6,8 @@ import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.OnClickListener
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.ImageView
 import android.widget.LinearLayout
 import dora.widget.panel.R
 import dora.widget.panel.MenuPanelItem
@@ -78,7 +76,7 @@ class InputMenuPanelItem
                 override fun afterTextChanged(s: Editable) {}
             })
         }
-        val arrowView = menuView.findViewById<ImageView>(ID_LINEAR_LAYOUT_ARROW)
+        val arrowView = menuView.findViewById<LinearLayout>(ID_LINEAR_LAYOUT_ARROW)
         if (showArrowIcon) {
             arrowView.visibility = View.VISIBLE
             arrowView.setOnClickListener {
