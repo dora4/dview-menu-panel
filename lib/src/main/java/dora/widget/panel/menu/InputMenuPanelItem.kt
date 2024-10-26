@@ -25,7 +25,7 @@ class InputMenuPanelItem
     override val menuName: String? = MenuPanelItem.generateMenuName("InputMenuPanelItem"),
     private val hint: String?  = "",
     private val content: String? = "",
-    private val showArrowIcon: Boolean = true,
+    private val showArrowIcon: Boolean = false,
     private val watcher: ContentWatcher? = null,
     private val onRandom: OnClickListener? = null,
 ) : MenuPanelItem {
@@ -78,12 +78,12 @@ class InputMenuPanelItem
                 override fun afterTextChanged(s: Editable) {}
             })
         }
-        val arrowIconView = menuView.findViewById<ImageView>(ID_IMAGE_VIEW_RANDOM)
+        val arrowView = menuView.findViewById<ImageView>(ID_LINEAR_LAYOUT_ARROW)
         if (showArrowIcon) {
-            arrowIconView.visibility = View.VISIBLE
-            arrowIconView.setOnClickListener(onRandom)
+            arrowView.visibility = View.VISIBLE
+            arrowView.setOnClickListener(onRandom)
         } else {
-            arrowIconView.visibility = View.INVISIBLE
+            arrowView.visibility = View.INVISIBLE
         }
     }
 
@@ -113,6 +113,8 @@ class InputMenuPanelItem
     companion object {
         @JvmField
         val ID_EDIT_TEXT_INPUT: Int = R.id.et_menu_panel_input
+        @JvmField
+        val ID_LINEAR_LAYOUT_ARROW: Int = R.id.ll_menu_panel_arrow
         @JvmField
         val ID_IMAGE_VIEW_RANDOM: Int = R.id.iv_menu_panel_random
     }
