@@ -24,6 +24,6 @@ allprojects {
 }
 // 添加以下代码到app模块的build.gradle
 dependencies {
-    implementation 'com.github.dora4:dview-menu-panel:1.28'
+    implementation 'com.github.dora4:dview-menu-panel:1.35'
 }
 ```
