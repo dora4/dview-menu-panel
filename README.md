@@ -27,3 +27,27 @@ dependencies {
     implementation 'com.github.dora4:dview-menu-panel:1.35'
 }
 ```
+
+#### 使用
+
+```kotlin
+binding.menuPanel.addMenu(NormalMenuPanelItem("open_floating_permission", "打开悬浮窗权限"))
+			.setOnPanelMenuClickListener(object : MenuPanel.OnPanelMenuClickListener {
+				override fun onMenuClick(
+					position: Int,
+					view: View,
+					menuName: String,
+					item: MenuPanelItem
+				) {
+					when (menuName) {
+						"open_floating_permission" -> {
+							if (!Settings.canDrawOverlays(this@MainActivity)) {
+								val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
+									Uri.parse("package:$packageName"))
+								startActivityForResult(intent, REQUEST_OVERLAY_PERMISSION)
+							}
+						}
+					}
+				}
+			})
+```
