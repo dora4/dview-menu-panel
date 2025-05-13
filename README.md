@@ -5,7 +5,7 @@ dview-menu-panel
 #### 卡片
 
 ![DORA视图 菜单面板](https://github.com/user-attachments/assets/94b510cd-f37c-4a68-9dac-58a18d603419)
-![Dora视图_积木战士](https://github.com/user-attachments/assets/66763607-391b-43f3-bf39-6f59ab9da2f3)
+![DORA视图 DORA战士](https://github.com/user-attachments/assets/9233a84c-422a-408a-b812-acc2bb95ec4d)
 ##### 卡名：Dora视图 MenuPanel
 ###### 卡片类型：效果怪兽
 ###### 属性：风
