@@ -3,7 +3,8 @@ dview-menu-panel
 --------------------------------
 
 #### 卡片
-![Dora视图_Menu_Panel-](https://github.com/user-attachments/assets/61cdad04-f8e1-4170-a63f-449cc34e0e96)
+
+![DORA视图 菜单面板](https://github.com/user-attachments/assets/94b510cd-f37c-4a68-9dac-58a18d603419)
 ![Dora视图_积木战士](https://github.com/user-attachments/assets/66763607-391b-43f3-bf39-6f59ab9da2f3)
 ##### 卡名：Dora视图 MenuPanel
 ###### 卡片类型：效果怪兽
