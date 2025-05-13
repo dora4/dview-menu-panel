@@ -7,14 +7,6 @@ dview-menu-panel
 ![DORA视图 菜单面板](https://github.com/user-attachments/assets/ddd6d8fa-cbf8-4c05-9b65-4fe940774a2c)
 ![DORA视图 DORA战士](https://github.com/user-attachments/assets/9233a84c-422a-408a-b812-acc2bb95ec4d)
 
-##### 卡名：Dora视图 MenuPanel
-###### 卡片类型：效果怪兽
-###### 属性：风
-###### 星级：4
-###### 种族：植物族
-###### 攻击力/防御力：1500/1600
-###### 效果：此卡不会因为对方卡的效果而破坏，并可使其无效化。此卡攻击里侧守备表示的怪兽时，若攻击力高于其守备力，则给予对方此卡原攻击力的伤害，并抽一张卡。此卡一回合可以攻击两次。
-
 #### Gradle依赖配置
 
 ```groovy
