@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import dora.widget.panel.R
 import dora.widget.panel.MenuPanelItem
+import dora.widget.panel.MenuPanelItemGroup
 import dora.widget.panel.MenuPanelItemRoot
 import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_MARGIN_TOP
 import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_TITLE_SPAN
@@ -59,5 +60,35 @@ class ButtonMenuPanelItem @JvmOverloads constructor(
 
         @JvmField
         val ID_TEXT_VIEW_MENU: Int = R.id.tv_menu_panel_button_menu
+
+        /**
+         * 快速构建一组按钮菜单项的分组。
+         *
+         * 每个按钮项由一个 Triple<String, String, Int> 表示：
+         * - 第一个值为 menuName（唯一标识）
+         * - 第二个值为 text（按钮文本）
+         * - 第三个值为 textColor（按钮颜色）
+         *
+         * @param title 分组标题
+         * @param items 按钮配置数组
+         * @return MenuPanelItemGroup 实例
+         *
+         * @since 1.38
+         */
+        fun groupButtonItem(
+            title: String,
+            vararg items: Triple<String, String, Int>
+        ): MenuPanelItemGroup {
+            return MenuPanelItemGroup(
+                title = title,
+                items = items.map {
+                    ButtonMenuPanelItem(
+                        menuName = it.first,
+                        text = it.second,
+                        textColor = it.third
+                    )
+                }.toTypedArray()
+            )
+        }
     }
 }

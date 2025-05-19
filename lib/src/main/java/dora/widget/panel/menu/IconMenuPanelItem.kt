@@ -73,6 +73,7 @@ class IconMenuPanelItem @JvmOverloads constructor(
     }
 
     companion object {
+
         @JvmField
         val ID_IMAGE_VIEW_ICON: Int = R.id.iv_menu_panel_icon
         @JvmField
@@ -81,5 +82,21 @@ class IconMenuPanelItem @JvmOverloads constructor(
         val ID_IMAGE_VIEW_ARROW: Int = R.id.iv_menu_panel_normal_arrow
         @JvmField
         val ID_TEXT_VIEW_ARROW: Int = R.id.tv_menu_panel_normal_arrow
+
+        /**
+         * 快速创建一个带图标的菜单项组。
+         *
+         * @param title 分组标题
+         * @param items 每一项为 Triple<MenuName, 图标资源 ID, 文本>
+         * @since 1.38
+         */
+        fun groupIconItem(title: String, vararg items: Triple<String, Int, String>) =
+            dora.widget.panel.MenuPanelItemGroup(
+                title = title,
+                items = items.map {
+                    IconMenuPanelItem(it.first, it.second, it.third)
+                }.toTypedArray()
+            )
+
     }
 }

@@ -47,6 +47,18 @@ class MenuPanelItemGroup @JvmOverloads constructor(
 
     companion object {
 
+        /**
+         * 快速构建一个菜单项分组（MenuPanelItemGroup）。
+         *
+         * 用于将多个 [MenuPanelItem] 包装成一组，统一设置标题等属性，用于面板展示。
+         * 比如可以将多个按钮项、输入框项或普通项组合成一个分组。
+         *
+         * @param title 分组标题，可为空字符串表示不显示标题
+         * @param items 可变参数，表示该分组下包含的多个菜单项
+         * @return 构建好的 [MenuPanelItemGroup] 实例
+         *
+         * @since 1.37
+         */
         fun group(title: String, vararg items: MenuPanelItem): MenuPanelItemGroup {
             return MenuPanelItemGroup(title = title, items = items.toMutableList())
         }

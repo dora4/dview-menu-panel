@@ -11,6 +11,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import dora.widget.panel.R
 import dora.widget.panel.MenuPanelItem
+import dora.widget.panel.MenuPanelItemGroup
 import dora.widget.panel.MenuPanelItemRoot
 import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_MARGIN_TOP
 import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_TITLE_SPAN
@@ -115,11 +116,54 @@ class InputMenuPanelItem
     }
 
     companion object {
+
         @JvmField
         val ID_EDIT_TEXT_INPUT: Int = R.id.et_menu_panel_input
         @JvmField
         val ID_LINEAR_LAYOUT_ARROW: Int = R.id.ll_menu_panel_arrow
         @JvmField
         val ID_IMAGE_VIEW_RANDOM: Int = R.id.iv_menu_panel_random
+
+        /**
+         * 快速构建一个输入菜单项的分组。
+         *
+         * 每个输入项由一个 Triple<String, String, String> 表示：
+         * - 第一个值为 menuName（唯一标识）
+         * - 第二个值为 hint（输入框提示）
+         * - 第三个值为 content（初始内容）
+         *
+         * 可选传入统一的内容监听器 [watcher] 和“随机内容”生成器 [onRandom]。
+         *
+         * @param title 分组标题
+         * @param items 输入项的配置数组
+         * @param watcher 每个输入框内容变化的监听器（可选）
+         * @param onRandom 点击箭头图标后的内容生成逻辑（可选）
+         * @return MenuPanelItemGroup 实例
+         *
+         * @since 1.38
+         */
+        fun groupInputItem(
+            title: String,
+            vararg items: Triple<String, String, String>,
+            watcher: ContentWatcher? = null,
+            onRandom: ContentWriter? = null
+        ): MenuPanelItemGroup {
+            return MenuPanelItemGroup(
+                title = title,
+                items = items.map {
+                    InputMenuPanelItem(
+                        marginTop = DEFAULT_MARGIN_TOP,
+                        title = "",
+                        titleSpan = MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
+                        menuName = it.first,
+                        hint = it.second,
+                        content = it.third,
+                        showArrowIcon = onRandom != null,
+                        watcher = watcher,
+                        onRandom = onRandom
+                    )
+                }.toTypedArray()
+            )
+        }
     }
 }

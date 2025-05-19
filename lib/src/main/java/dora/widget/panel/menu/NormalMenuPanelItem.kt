@@ -78,6 +78,7 @@ class NormalMenuPanelItem @JvmOverloads constructor(
     }
 
     companion object {
+
         @JvmField
         val ID_TEXT_VIEW_MENU: Int = R.id.tv_menu_panel_normal_menu
         @JvmField
@@ -85,7 +86,20 @@ class NormalMenuPanelItem @JvmOverloads constructor(
         @JvmField
         val ID_TEXT_VIEW_ARROW: Int = R.id.tv_menu_panel_normal_arrow
 
-        fun group(title: String, vararg items: Pair<String, String>) =
+        /**
+         * 快速构建一个普通菜单项的分组。
+         *
+         * 每个菜单项由一个 Pair<String, String> 表示：
+         * - 第一个值为菜单项的 menuName（唯一标识）
+         * - 第二个值为显示的文本内容
+         *
+         * @param title 分组标题
+         * @param items 要展示的菜单项对，格式为 Pair(menuName, text)
+         * @return 一个包含多个 NormalMenuPanelItem 的 MenuPanelItemGroup 实例
+         *
+         * @since 1.38
+         */
+        fun groupNormalItem(title: String, vararg items: Pair<String, String>) =
             MenuPanelItemGroup(
                 title = title,
                 items = items.map { NormalMenuPanelItem(it.first, it.second) }.toTypedArray()
