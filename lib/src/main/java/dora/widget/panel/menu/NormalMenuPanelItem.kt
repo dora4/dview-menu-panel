@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import dora.widget.panel.R
 import dora.widget.panel.MenuPanelItem
+import dora.widget.panel.MenuPanelItemGroup
 import dora.widget.panel.MenuPanelItemRoot
 import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_MARGIN_TOP
 import dora.widget.panel.MenuPanelItemRoot.Companion.DEFAULT_TITLE_SPAN
@@ -37,6 +38,12 @@ class NormalMenuPanelItem @JvmOverloads constructor(
 
     constructor(menuName: String, text: String) : this(DEFAULT_MARGIN_TOP, "",
         MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), menuName, text, true, "")
+
+    fun group(title: String, vararg items: Pair<String, String>) =
+        MenuPanelItemGroup(
+            title = title,
+            items = items.map { NormalMenuPanelItem(it.first, it.second) }.toTypedArray()
+        )
 
     override fun hasTitle(): Boolean {
         return title != null && title != ""
