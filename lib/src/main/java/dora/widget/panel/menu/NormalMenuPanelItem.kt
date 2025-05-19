@@ -39,12 +39,6 @@ class NormalMenuPanelItem @JvmOverloads constructor(
     constructor(menuName: String, text: String) : this(DEFAULT_MARGIN_TOP, "",
         MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), menuName, text, true, "")
 
-    fun group(title: String, vararg items: Pair<String, String>) =
-        MenuPanelItemGroup(
-            title = title,
-            items = items.map { NormalMenuPanelItem(it.first, it.second) }.toTypedArray()
-        )
-
     override fun hasTitle(): Boolean {
         return title != null && title != ""
     }
@@ -90,5 +84,11 @@ class NormalMenuPanelItem @JvmOverloads constructor(
         val ID_IMAGE_VIEW_ARROW: Int = R.id.iv_menu_panel_normal_arrow
         @JvmField
         val ID_TEXT_VIEW_ARROW: Int = R.id.tv_menu_panel_normal_arrow
+
+        fun group(title: String, vararg items: Pair<String, String>) =
+            MenuPanelItemGroup(
+                title = title,
+                items = items.map { NormalMenuPanelItem(it.first, it.second) }.toTypedArray()
+            )
     }
 }

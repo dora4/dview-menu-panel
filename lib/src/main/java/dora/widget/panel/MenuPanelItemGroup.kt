@@ -33,10 +33,6 @@ class MenuPanelItemGroup @JvmOverloads constructor(
         vararg items: MenuPanelItem) :
             this(DEFAULT_MARGIN_TOP, "",  MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), Arrays.asList<MenuPanelItem>(*items))
 
-    fun group(title: String, vararg items: MenuPanelItem): MenuPanelItemGroup {
-        return MenuPanelItemGroup(title = title, items = items.toMutableList())
-    }
-
     override fun hasTitle(): Boolean {
         return title != null && title != ""
     }
@@ -47,5 +43,12 @@ class MenuPanelItemGroup @JvmOverloads constructor(
 
     override fun setTitleSpan(titleSpan: MenuPanelItemRoot.Span) {
         this.titleSpan = titleSpan
+    }
+
+    companion object {
+
+        fun group(title: String, vararg items: MenuPanelItem): MenuPanelItemGroup {
+            return MenuPanelItemGroup(title = title, items = items.toMutableList())
+        }
     }
 }
