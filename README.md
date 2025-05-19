@@ -18,7 +18,7 @@ allprojects {
 }
 // 添加以下代码到app模块的build.gradle
 dependencies {
-    implementation 'com.github.dora4:dview-menu-panel:1.35'
+    implementation 'com.github.dora4:dview-menu-panel:1.38'
 }
 ```
 
@@ -26,6 +26,7 @@ dependencies {
 
 ```kotlin
 binding.menuPanel.addMenu(NormalMenuPanelItem("open_floating_permission", "打开悬浮窗权限"))
+			.addMenuGroup(groupNormalItem("这是标题", "menu1" to "菜单1", "menu2" to "菜单2"))
 			.setOnPanelMenuClickListener(object : MenuPanel.OnPanelMenuClickListener {
 				override fun onMenuClick(
 					position: Int,
