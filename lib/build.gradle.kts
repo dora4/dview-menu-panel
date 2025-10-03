@@ -10,7 +10,6 @@ android {
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 33
     }
     buildTypes {
         release {
@@ -35,7 +34,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.dora4"
                 artifactId = rootProject.project.name
-                version = "1.38"
+                version = "1.39"
             }
         }
     }

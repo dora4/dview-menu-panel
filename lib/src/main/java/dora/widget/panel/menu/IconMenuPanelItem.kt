@@ -32,6 +32,13 @@ class IconMenuPanelItem @JvmOverloads constructor(
     constructor(menuName: String?, iconRes: Int, text: String) :
             this(DEFAULT_MARGIN_TOP, menuName, iconRes, text)
 
+    constructor(menuName: String?, iconRes: Int, text: String, showArrowIcon: Boolean, arrowText: String) :
+            this(DEFAULT_MARGIN_TOP, "", MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN),
+                menuName, iconRes, text, showArrowIcon, arrowText)
+
+    constructor(menuName: String?, iconRes: Int, text: String, showArrowIcon: Boolean) :
+            this(menuName, iconRes, text, showArrowIcon, "")
+
     override fun hasTitle(): Boolean {
         return title != null && title != ""
     }
