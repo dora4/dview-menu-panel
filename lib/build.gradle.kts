@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "dora.widget.panel"
-    compileSdk = 34
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 21
