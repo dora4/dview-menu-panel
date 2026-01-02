@@ -25,6 +25,7 @@ android {
 
 dependencies {
     implementation("androidx.appcompat:appcompat:1.7.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 }
 
 afterEvaluate {
@@ -34,7 +35,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.dora4"
                 artifactId = rootProject.project.name
-                version = "1.41"
+                version = "1.42"
             }
         }
     }

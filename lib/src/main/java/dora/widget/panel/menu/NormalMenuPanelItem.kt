@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import dora.widget.panel.R
 import dora.widget.panel.MenuPanelItem
 import dora.widget.panel.MenuPanelItemGroup
@@ -59,7 +60,7 @@ class NormalMenuPanelItem @JvmOverloads constructor(
     }
 
     override fun initData(menuView: View) {
-        val lp = LinearLayout.LayoutParams(
+        val lp = ConstraintLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )

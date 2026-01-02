@@ -125,7 +125,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
             container.removeView(view)
         } else {
             // 属于一个组
-            val menuGroupCard = groupInfo!!.groupMenuCard
+            val menuGroupCard = groupInfo.groupMenuCard
             menuGroupCard.removeView(view)
             groupInfo.removeItem(item)
             // 一个组内的item全部被移除后，也移除掉这个组
@@ -145,7 +145,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
      * 清空所有item和相关view。
      */
     fun clearAll(): MenuPanel {
-        if (menuPanelItems.size > 0) {
+        if (menuPanelItems.isNotEmpty()) {
             menuPanelItems.clear()
         }
         container.removeAllViews()

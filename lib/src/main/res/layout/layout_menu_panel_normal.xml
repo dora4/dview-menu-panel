@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rl_menu_panel_normal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -15,25 +17,29 @@
         android:id="@+id/tv_menu_panel_normal_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
         android:textSize="16sp"
-        android:textColor="@color/color_menu_panel_black"/>
+        android:textColor="@color/color_menu_panel_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_menu_panel_normal_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@color/color_menu_panel_gray"
+        app:layout_constraintEnd_toStartOf="@id/iv_menu_panel_normal_arrow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <ImageView
         android:id="@+id/iv_menu_panel_normal_arrow"
         android:layout_width="15dp"
         android:layout_height="15dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/ic_menu_panel_item_arrow" />
-    <TextView
-        android:id="@+id/tv_menu_panel_normal_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toStartOf="@id/iv_menu_panel_normal_arrow"
-        android:layout_marginEnd="3dp"
-        android:textSize="14sp"
-        android:textColor="@color/color_menu_panel_gray"/>
-</RelativeLayout>
+        android:src="@drawable/ic_menu_panel_item_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

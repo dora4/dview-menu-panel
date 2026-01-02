@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import dora.widget.panel.R
 import dora.widget.panel.MenuPanelItem
 import dora.widget.panel.MenuPanelItemGroup
@@ -48,7 +49,7 @@ class InputMenuPanelItem
                 content: String) : this(hint, content, null)
 
     override fun initData(menuView: View) {
-        val lp = LinearLayout.LayoutParams(
+        val lp = ConstraintLayout.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
             ViewGroup.LayoutParams.WRAP_CONTENT
         )
