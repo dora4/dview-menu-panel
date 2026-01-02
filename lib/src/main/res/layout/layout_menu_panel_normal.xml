@@ -39,6 +39,7 @@
         android:maxLines="1"
         android:textSize="14sp"
         android:textColor="@color/color_menu_panel_gray"
+        app:layout_constraintStart_toEndOf="@id/tv_menu_panel_normal_menu"
         app:layout_constraintEnd_toStartOf="@id/iv_menu_panel_normal_arrow"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
@@ -49,6 +50,7 @@
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:src="@drawable/ic_menu_panel_item_arrow"
+        app:layout_constraintStart_toEndOf="@id/tv_menu_panel_normal_arrow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
