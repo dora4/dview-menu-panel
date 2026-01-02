@@ -74,7 +74,7 @@ class IconMenuPanelItem @JvmOverloads constructor(
         if (showArrowIcon) {
             arrowIconView.visibility = View.VISIBLE
         } else {
-            arrowIconView.visibility = View.INVISIBLE
+            arrowIconView.visibility = View.GONE
         }
         arrowTextView.text = arrowText
     }
