@@ -78,13 +78,13 @@ class InputMenuPanelItem
             })
         }
         val arrowView = menuView.findViewById<LinearLayout>(ID_LINEAR_LAYOUT_ARROW)
+        arrowView.setOnClickListener {
+            onRandom?.onRandomContent(this, editText)
+        }
         if (showArrowIcon) {
             arrowView.visibility = View.VISIBLE
-            arrowView.setOnClickListener {
-                onRandom?.onRandomContent(this, editText)
-            }
         } else {
-            arrowView.visibility = View.INVISIBLE
+            arrowView.visibility = View.GONE
         }
     }
 
