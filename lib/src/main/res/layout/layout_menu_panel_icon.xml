@@ -1,15 +1,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rl_menu_panel_normal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="10dp"
-    android:background="@color/color_menu_panel_white"
-    android:clickable="true"
-    android:foreground="?selectableItemBackground"
     android:paddingHorizontal="15dp"
-    android:paddingVertical="10dp">
+    android:paddingVertical="10dp"
+    android:background="@color/color_menu_panel_white">
 
     <!-- 左侧 icon -->
     <ImageView
@@ -28,7 +24,22 @@
         android:layout_marginStart="5dp"
         android:textSize="16sp"
         android:textColor="@color/color_menu_panel_black"
+        android:ellipsize="end"
+        android:maxLines="1"
         app:layout_constraintStart_toEndOf="@id/iv_menu_panel_icon"
+        app:layout_constraintEnd_toStartOf="@id/tv_menu_panel_normal_arrow"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <!-- 右侧文字 -->
+    <TextView
+        android:id="@+id/tv_menu_panel_normal_arrow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:textSize="14sp"
+        android:textColor="@color/color_menu_panel_gray"
+        app:layout_constraintEnd_toStartOf="@id/iv_menu_panel_normal_arrow"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
@@ -39,18 +50,6 @@
         android:layout_height="15dp"
         android:src="@drawable/ic_menu_panel_item_arrow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <!-- 右侧文字 -->
-    <TextView
-        android:id="@+id/tv_menu_panel_normal_arrow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="3dp"
-        android:textSize="14sp"
-        android:textColor="@color/color_menu_panel_gray"
-        app:layout_constraintEnd_toStartOf="@id/iv_menu_panel_normal_arrow"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 

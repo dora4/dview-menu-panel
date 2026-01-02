@@ -13,26 +13,33 @@
     android:paddingHorizontal="15dp"
     android:paddingVertical="10dp">
 
+    <!-- 菜单文字 -->
     <TextView
         android:id="@+id/tv_menu_panel_normal_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textColor="@color/color_menu_panel_black"
+        android:ellipsize="end"
+        android:maxLines="1"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_menu_panel_normal_arrow"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <!-- 右侧文字（右区域） -->
     <TextView
         android:id="@+id/tv_menu_panel_normal_arrow"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
         android:textSize="14sp"
         android:textColor="@color/color_menu_panel_gray"
         app:layout_constraintEnd_toStartOf="@id/iv_menu_panel_normal_arrow"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <!-- 右侧箭头 -->
     <ImageView
         android:id="@+id/iv_menu_panel_normal_arrow"
         android:layout_width="15dp"
