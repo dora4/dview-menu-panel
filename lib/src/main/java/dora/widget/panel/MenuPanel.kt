@@ -25,6 +25,11 @@ open class MenuPanel : ScrollView, View.OnClickListener {
      * 面板的背景颜色，一般为浅灰色。
      */
     private var panelBgColor = DEFAULT_PANEL_BG_COLOR
+
+    /**
+     * 标题颜色，要在添加组之前设置。
+     */
+    private var titleColor = DEFAULT_TITLE_COLOR
     protected var menuPanelItems: MutableList<MenuPanelItem> = ArrayList()
     protected var viewsCache: MutableList<View> = ArrayList()
     private var onPanelMenuClickListener: OnPanelMenuClickListener? = null
@@ -62,7 +67,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
         ) {
             removeItem(position)
         } else {
-            Log.e(TAG, "failed to seekForItemPosition，$position")
+            Log.e(TAG, "Failed to seekForItemPosition，$position")
         }
         return this
     }
@@ -210,7 +215,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
         )
         titleView.text = itemGroup.title
         titleView.textSize = 15f
-        titleView.setTextColor(DEFAULT_TITLE_COLOR)
+        titleView.setTextColor(titleColor)
         val menuGroupCard = LinearLayout(context)
         menuGroupCard.orientation = LinearLayout.VERTICAL
         val lp = LinearLayout.LayoutParams(
@@ -264,7 +269,7 @@ open class MenuPanel : ScrollView, View.OnClickListener {
             )
             titleView.text = item.title
             titleView.textSize = 15f
-            titleView.setTextColor(DEFAULT_TITLE_COLOR)
+            titleView.setTextColor(titleColor)
             val menuCard = LinearLayout(context)
             menuCard.orientation = LinearLayout.VERTICAL
             menuCard.addView(titleView)
@@ -475,6 +480,11 @@ open class MenuPanel : ScrollView, View.OnClickListener {
                 break
             }
         }
+    }
+
+    fun setTitleColor(@ColorInt color: Int): MenuPanel {
+        titleColor = color
+        return this
     }
 
     fun setPanelBgColor(@ColorInt color: Int): MenuPanel {
