@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <!-- 深色：面板背景改成深色 -->
+    <color name="color_menu_panel_white">#2B2B2B</color>
+    <!-- 深色文字 -->
+    <color name="color_menu_panel_black">#F5F5F5</color>
+    <color name="color_menu_panel_gray">#AAAAAA</color>
+
+    <color name="color_menu_panel_item_arrow">#888888</color>
+    <!-- 深色光标 -->
+    <color name="color_menu_panel_input_cursor">#757575</color>
+</resources>
