@@ -27,31 +27,34 @@ class InputMenuPanelItem
     override val menuName: String? = MenuPanelItem.generateMenuName("InputMenuPanelItem"),
     private val hint: String?  = "",
     private val content: String? = "",
-    private val contentTextColor: Int = Color.GRAY,
+    private val contentTextColor: Int? = null,
+    private val contentTextSize: Float? = null,
     private val showArrowIcon: Boolean = false,
     private val watcher: ContentWatcher? = null,
     private val onRandom: ContentWriter? = null,
 ) : MenuPanelItem {
 
     constructor(title: String, titleSpan: MenuPanelItemRoot.Span, hint: String,
-                content: String, @ColorInt contentTextColor: Int = Color.GRAY, showArrowIcon: Boolean, watcher: ContentWatcher? = null,
+                content: String, @ColorInt contentTextColor: Int?, contentTextSize: Float?,
+                showArrowIcon: Boolean, watcher: ContentWatcher? = null,
                 onRandom: ContentWriter? = null) : this(DEFAULT_MARGIN_TOP,
         title, titleSpan, MenuPanelItem.generateMenuName("InputMenuPanelItem"),
-        hint, content, contentTextColor, showArrowIcon, watcher, onRandom)
+        hint, content, contentTextColor, contentTextSize, showArrowIcon, watcher, onRandom)
 
     constructor(title: String, titleSpan: MenuPanelItemRoot.Span, hint: String,
-                content: String, @ColorInt contentTextColor: Int = Color.GRAY, showArrowIcon: Boolean,
-                onRandom: ContentWriter? = null) : this(title, titleSpan, hint, content, contentTextColor,
+                content: String, @ColorInt contentTextColor: Int?, contentTextSize: Float?, showArrowIcon: Boolean,
+                onRandom: ContentWriter? = null) : this(title, titleSpan, hint, content, contentTextColor, contentTextSize,
             showArrowIcon, null, onRandom)
 
     constructor(hint: String,
-                content: String, @ColorInt contentTextColor: Int, watcher: ContentWatcher? = null) : this(DEFAULT_MARGIN_TOP,
+                content: String, @ColorInt contentTextColor: Int?, contentTextSize: Float?, watcher: ContentWatcher? = null) : this(DEFAULT_MARGIN_TOP,
         "", MenuPanelItemRoot.Span(DEFAULT_TITLE_SPAN), MenuPanelItem.generateMenuName("InputMenuPanelItem"),
-        hint, content, contentTextColor = Color.GRAY, false, watcher)
+        hint, content, contentTextColor = contentTextColor, contentTextSize, false, watcher)
 
     constructor(hint: String,
                 content: String,
-                @ColorInt contentTextColor: Int = Color.GRAY) : this(hint, content, contentTextColor, null)
+                @ColorInt contentTextColor: Int?,
+                contentTextSize: Float?) : this(hint, content, contentTextColor, contentTextSize, null)
 
     override fun initData(menuView: View) {
         val lp = ConstraintLayout.LayoutParams(
@@ -62,9 +65,14 @@ class InputMenuPanelItem
         menuView.layoutParams = lp
         val editText = menuView.findViewById<EditText>(ID_EDIT_TEXT_INPUT)
         editText.hint = hint
+        if (contentTextColor != null) {
+            editText.setTextColor(contentTextColor)
+        }
+        if (contentTextSize != null) {
+            editText.textSize = contentTextSize
+        }
         if (!TextUtils.isEmpty(content)) {
             editText.setText(content)
-            editText.setTextColor(contentTextColor)
             editText.setSelection(content!!.length)
         }
         if (watcher != null) {
